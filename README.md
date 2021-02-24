@@ -2,90 +2,6 @@
 
 **一个自动执行任务的工具，通过它可以实现账号自动签到，自动领取权益等功能，帮助我们轻松升级。**
 
-## bilibili签到任务
-**实现现B站帐号的每日自动观看、分享、投币视频，获取经验，每月自动领取会员权益等功能，帮助我们轻松升级会员到Lv6并赚取电池。**
-
-详细功能目录如下:
-
-* **每天自动登录，获取经验**
-* **每天自动观看、分享、投币视频**
-* **每天漫画自动签到**
-* **每天自动直播签到，领取奖励**
-* **每天自动使用直播中心银瓜子兑换B币**
-* **每个月自动领取5张B币券和大会员权益**
-
-```sh
-node index.js bilibili --cookies "b6*********4a581;"
-```
-
-### docker部署
-```sh
-# 构建
-docker build -t auto-sign-machine:latest  -f docker/Dockerfile .
-# 运行
-docker run \
-  --name auto-sign-machine \
-  -d \
-  -e enable_bilibili=true \
-  -e DedeUserID=41*****1073  \
-  -e SESSDATA=05*********333*b1 \
-  -e bili_jct=b6*********4a581 \
-  auto-sign-machine:latest
-```
-
-## 52pojie签到任务
-**实现现52pojie帐号的每日签到任务。**
-
-```sh
-node index.js 52pojie --htVD_2132_auth b22d**********************aNjr --htVD_2132_saltkey Jc***********I
-```
-
-### docker部署
-```sh
-# 构建
-docker build -t auto-sign-machine:latest  -f docker/Dockerfile .
-# 运行
-docker run \
-  --name auto-sign-machine \
-  -d \
-  --label traefik.enable=false \
-  -e enable_52pojie=true \
-  -e htVD_2132_auth=b******************jr \
-  -e htVD_2132_saltkey=Jc************I \
-  auto-sign-machine:latest
-```
-、
-## iqiyi签到任务
-**实现现iqiyi帐号的每日签到任务。**
-详细功能目录如下:
-
-* **普通用户每天自动获取积分**
-* **vip用户每日签到随机成长值及积分**
-* **vip用户每日浏览会员俱乐部+1成长值**
-
-```sh
-node index.js iqiyi --P00001 b********jr --P00PRU 12***24 --QC005 5f******6fe --dfp Jc************I
-```
-
-### docker部署
-```sh
-# 构建
-docker build -t auto-sign-machine:latest  -f docker/Dockerfile .
-# 运行
-docker run \
-  --name auto-sign-machine \
-  -d \
-  --label traefik.enable=false \
-  -e enable_iqiyi=true \
-  -e P00001=b********jr \
-  -e P00PRU=12***24 \
-  -e QC005=5f******6fe \
-  -e dfp=Jc************I \
-  auto-sign-machine:latest
-```
-
-
-、
 ## 联通APP签到任务
 **实现现联通帐号的每日签到任务。**
 详细功能目录如下:
@@ -110,7 +26,7 @@ docker run \
 * **首页-积分查询-游戏任务**
 
 ```sh
-node index.js unicom --user 131*******12 --password 11****11 --appid f7af****ebb
+node index.js unicom --user 17601549993 --password 870216 --appid 1f7af72ad6912d306b5053abf90c7ebb57520e9c009ff9d26c1f916bd80407ad117eec53f4b85503bf8342619faf791bb17582c62a87a1f6ab3591ca0b6af874
 ```
 
 ### docker部署
@@ -123,9 +39,9 @@ docker run \
   -d \
   --label traefik.enable=false \
   -e enable_unicom=true \
-  -e user=131*******12 \
-  -e password=11****11 \
-  -e appid=f7af****ebb \
+  -e user=17601549993 \
+  -e password=870216 \
+  -e appid=1f7af72ad6912d306b5053abf90c7ebb57520e9c009ff9d26c1f916bd80407ad117eec53f4b85503bf8342619faf791bb17582c62a87a1f6ab3591ca0b6af874 \
   auto-sign-machine:latest
 ```
 
@@ -138,7 +54,7 @@ docker run \
 ### crontab 任务示例
 在4-23小时之间每隔三十分钟尝试运行可运行的脚本子任务
 ```txt
-*/30 4-23 * * * /bin/node /workspace/AutoSignMachine/index.js unicom --user 1******5 --password 7****** --appid 1************9
+*/30 4-23 * * * /bin/node /workspace/AutoSignMachine/index.js unicom --user 17601549993 --password 870216 --appid 1f7af72ad6912d306b5053abf90c7ebb57520e9c009ff9d26c1f916bd80407ad117eec53f4b85503bf8342619faf791bb17582c62a87a1f6ab3591ca0b6af874
 ```
 
 ### 多用户配置
